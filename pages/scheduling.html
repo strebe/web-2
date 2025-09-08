@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento - Minimercado Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/css/pages.css" rel="stylesheet">
+</head>
+<body class="p-4">
+    <div class="container-fluid">
+        <div class="text-center mb-4">
+            <h1 class="display-5 text-primary fw-bold">
+                <i class="bi bi-calendar-check-fill me-3"></i>Agendamento de Serviços
+            </h1>
+            <p class="lead text-muted">Escolha o melhor horário para receber seus produtos</p>
+        </div>
+
+        <!-- Alert Container -->
+        <div id="schedulingAlert" class="alert d-none" role="alert"></div>
+
+        <!-- Formulário de Agendamento -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <form id="schedulingForm" novalidate>
+                            <!-- Tipo de Serviço -->
+                            <div class="section-header mb-4">
+                                <h4 class="text-primary border-bottom pb-2">
+                                    <i class="bi bi-gear-fill me-2"></i>Tipo de Serviço
+                                </h4>
+                            </div>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <div class="service-option card h-100" data-service="delivery">
+                                        <div class="card-body text-center p-4">
+                                            <i class="bi bi-truck text-primary display-4 mb-3"></i>
+                                            <h5 class="card-title">Entrega Domiciliar</h5>
+                                            <p class="card-text text-muted">Receba em casa com segurança</p>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="serviceType" id="delivery" value="delivery">
+                                                <label class="form-check-label fw-bold" for="delivery">
+                                                    Selecionar Entrega
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="service-option card h-100" data-service="pickup">
+                                        <div class="card-body text-center p-4">
+                                            <i class="bi bi-shop text-success display-4 mb-3"></i>
+                                            <h5 class="card-title">Retirada na Loja</h5>
+                                            <p class="card-text text-muted">Retire no balcão sem taxa</p>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="serviceType" id="pickup" value="pickup">
+                                                <label class="form-check-label fw-bold" for="pickup">
+                                                    Selecionar Retirada
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="serviceTypeError" class="text-danger mb-3"></div>
+
+                            <!-- Dados do Cliente -->
+                            <div class="section-header mb-4">
+                                <h4 class="text-primary border-bottom pb-2">
+                                    <i class="bi bi-person-fill me-2"></i>Dados do Cliente
+                                </h4>
+                            </div>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="customerName" class="form-label">Nome Completo *</label>
+                                    <input type="text" class="form-control" id="customerName" name="customerName" required>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="customerPhone" class="form-label">Telefone *</label>
+                                    <input type="tel" class="form-control" id="customerPhone" name="customerPhone" placeholder="(00) 00000-0000" required>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+
+                            <!-- Endereço de Entrega (condicional) -->
+                            <div id="deliveryAddress" class="d-none">
+                                <div class="section-header mb-4">
+                                    <h4 class="text-primary border-bottom pb-2">
+                                        <i class="bi bi-house-fill me-2"></i>Endereço de Entrega
+                                    </h4>
+                                </div>
+
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-4">
+                                        <label for="deliveryCep" class="form-label">CEP *</label>
+                                        <input type="text" class="form-control" id="deliveryCep" name="deliveryCep" placeholder="00000-000">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label for="deliveryStreet" class="form-label">Endereço *</label>
+                                        <input type="text" class="form-control" id="deliveryStreet" name="deliveryStreet" placeholder="Rua, Avenida...">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-3">
+                                        <label for="deliveryNumber" class="form-label">Número *</label>
+                                        <input type="text" class="form-control" id="deliveryNumber" name="deliveryNumber" placeholder="123">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <label for="deliveryNeighborhood" class="form-label">Bairro *</label>
+                                        <input type="text" class="form-control" id="deliveryNeighborhood" name="deliveryNeighborhood">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Data e Horário -->
+                            <div class="section-header mb-4">
+                                <h4 class="text-primary border-bottom pb-2">
+                                    <i class="bi bi-calendar-event me-2"></i>Data e Horário
+                                </h4>
+                            </div>
+
+                            <div class="row g-4 mb-4">
+                                <!-- Calendário -->
+                                <div class="col-md-6">
+                                    <h5 class="text-secondary mb-3">
+                                        <i class="bi bi-calendar3 me-2"></i>Escolha a Data
+                                    </h5>
+                                    <div class="calendar-container">
+                                        <div class="calendar-header d-flex justify-content-between align-items-center mb-3">
+                                            <button type="button" id="prevMonth" class="btn btn-outline-primary btn-sm">
+                                                <i class="bi bi-chevron-left"></i>
+                                            </button>
+                                            <h6 id="monthYear" class="mb-0 fw-bold"></h6>
+                                            <button type="button" id="nextMonth" class="btn btn-outline-primary btn-sm">
+                                                <i class="bi bi-chevron-right"></i>
+                                            </button>
+                                        </div>
+                                        <div class="calendar-grid">
+                                            <div class="calendar-weekdays">
+                                                <div class="weekday">Dom</div>
+                                                <div class="weekday">Seg</div>
+                                                <div class="weekday">Ter</div>
+                                                <div class="weekday">Qua</div>
+                                                <div class="weekday">Qui</div>
+                                                <div class="weekday">Sex</div>
+                                                <div class="weekday">Sáb</div>
+                                            </div>
+                                            <div id="calendarDays" class="calendar-days"></div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="selectedDate" name="selectedDate">
+                                    <div id="dateError" class="text-danger mt-2"></div>
+                                </div>
+
+                                <!-- Horários -->
+                                <div class="col-md-6">
+                                    <h5 class="text-secondary mb-3">
+                                        <i class="bi bi-clock me-2"></i>Escolha o Horário
+                                    </h5>
+                                    <div class="time-slots-container">
+                                        <div id="timeSlots" class="time-slots"></div>
+                                    </div>
+                                    <input type="hidden" id="selectedTime" name="selectedTime">
+                                    <div id="timeError" class="text-danger mt-2"></div>
+                                </div>
+                            </div>
+
+                            <!-- Observações -->
+                            <div class="section-header mb-4">
+                                <h4 class="text-primary border-bottom pb-2">
+                                    <i class="bi bi-chat-text me-2"></i>Observações (Opcional)
+                                </h4>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="observations" class="form-label">Informações adicionais</label>
+                                <textarea class="form-control" id="observations" name="observations" rows="3" 
+                                          placeholder="Descreva produtos específicos, preferências ou instruções especiais..."></textarea>
+                            </div>
+
+                            <!-- Botão de Envio -->
+                            <div class="text-center">
+                                <button type="submit" id="scheduleBtn" class="btn btn-primary btn-lg px-5">
+                                    <i class="bi bi-calendar-check me-2"></i>Confirmar Agendamento
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Sucesso -->
+        <div class="modal fade" id="schedulingSuccessModal" tabindex="-1" aria-labelledby="schedulingSuccessModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="schedulingSuccessModalLabel">
+                            <i class="bi bi-check-circle-fill me-2"></i>Agendamento Confirmado!
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center p-4">
+                        <i class="bi bi-calendar-check text-success display-4 mb-3"></i>
+                        <h4 class="text-success mt-3">Perfeito!</h4>
+                        <p class="mb-4">Seu agendamento foi confirmado com sucesso. Entraremos em contato para confirmar os detalhes.</p>
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>Próximos passos:</strong> Nossa equipe entrará em contato em até 30 minutos.
+                        </div>
+                        <div class="d-flex gap-2 justify-content-center">
+                            <a href="#" class="btn btn-success" data-page="products">
+                                <i class="bi bi-basket me-2"></i>Ver Produtos
+                            </a>
+                            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
+                                <i class="bi bi-house me-2"></i>Voltar ao Início
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .service-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .service-option.selected {
+            border-color: #28a745;
+            background-color: #f8fff9;
+        }
+
+        .calendar-container {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: #fff;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .weekday {
+            text-align: center;
+            font-weight: bold;
+            padding: 0.5rem;
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day:hover {
+            background-color: #e3f2fd;
+            border-color: #2196f3;
+        }
+
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+            background-color: #f8f9fa;
+        }
+
+        .calendar-day.selected {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .time-slot {
+            padding: 0.75rem;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #fff;
+        }
+
+        .time-slot:hover {
+            background-color: #e3f2fd;
+            border-color: #2196f3;
+        }
+
+        .time-slot.selected {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border-color: #28a745;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #218838, #1da1a1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/form-validator.js"></script>
+    <script src="../assets/js/pages/scheduling-handler.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            SchedulingFormHandler.initializeIfNeeded();
+        });
+    </script>
+</body>
+</html>

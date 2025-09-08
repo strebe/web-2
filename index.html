@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimercado Web</title>
+    <meta name="description" content="Minimercado Web - Qualidade e confiança em carnes, hortifruti e mercearia">
+    <meta name="keywords" content="minimercado, açougue, hortifruti, mercearia, entrega, qualidade">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#spa-content" class="skip-link sr-only sr-only-focusable">Pular para o conteúdo principal</a>
+    
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#" aria-label="Página inicial do Minimercado Web">
+                    <i class="bi bi-shop me-2" aria-hidden="true"></i>Minimercado Web
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Menu de navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-page="about" aria-label="Sobre o Minimercado Web">
+                                <i class="bi bi-info-circle me-1" aria-hidden="true"></i>Sobre
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="products" aria-label="Produtos disponíveis">
+                                <i class="bi bi-basket me-1" aria-hidden="true"></i>Produtos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="services" aria-label="Serviços oferecidos">
+                                <i class="bi bi-truck me-1" aria-hidden="true"></i>Serviços
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="customer-register" aria-label="Cadastro de cliente">
+                                <i class="bi bi-person-plus me-1" aria-hidden="true"></i>Cadastro
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="scheduling" aria-label="Agendamento de entregas">
+                                <i class="bi bi-calendar-check me-1" aria-hidden="true"></i>Agendamento
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="loading" style="display: none;">
+                        <div class="spinner" aria-label="Carregando conteúdo"></div>
+                    </div>
+                    <div id="spa-content" class="spa-content p-4" style="min-height: 600px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <!-- Content will be loaded here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h5><i class="bi bi-telephone me-2" aria-hidden="true"></i>Contato</h5>
+                    <p>Telefone: (00) 1234-5678</p>
+                    <p>Email: contato@minimercadoweb.com</p>
+                </div>
+                
+                <div class="footer-section text-center">
+                    <h5><i class="bi bi-shop me-2" aria-hidden="true"></i>Minimercado Web</h5>
+                    <p>Qualidade e confiança desde 2025!</p>
+                </div>
+                
+                <div class="footer-section text-end">
+                    <h5><i class="bi bi-person me-2" aria-hidden="true"></i>Desenvolvedor</h5>
+                    <p>Autor: Gustavo Strebe - PUCRS</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/form-validator.js"></script>
+    <script src="assets/js/pages/customer-form-handler.js"></script>
+    <script src="assets/js/pages/scheduling-handler.js"></script>
+    <script src="assets/js/pages/products-handler.js"></script>
+    <script src="assets/js/router.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+/* Minimercado Web - Main Styles */
+
+/* Import modular stylesheets for better maintainability */
+@import url('./base.css');
+@import url('./layout.css');  
+@import url('./components.css');
+@import url('./forms.css');
+
+/* Page-specific overrides and customizations */
+
+/* About page specific styles */
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* Products page specific styles */
+.products-carousel .carousel-inner {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+/* Print styles */
+@media print {
+  .main-header,
+  .main-footer,
+  .btn,
+  .carousel-control-prev,
+  .carousel-control-next,
+  .carousel-indicators {
+    display: none !important;
+  }
+  
+  body {
+    padding-top: 0;
+    color: #000;
+    background: #fff;
+  }
+}

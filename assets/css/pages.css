@@ -1,0 +1,35 @@
+/* Minimercado Web - Page-specific Overrides */
+
+/* Import base styles - now using modular approach */
+@import url('./main.css');
+
+/* Page-specific customizations that differ from base components */
+
+/* Individual page background gradients */
+body.page-products { 
+    background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+}
+
+body.page-about { 
+    background: linear-gradient(135deg, #f8f9fa, #e8f5e8);
+}
+
+body.page-scheduling { 
+    background: linear-gradient(135deg, #f8f9fa, #fff3e0);
+}
+
+/* Page-specific product image sizing */
+.page-products .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Override for standalone pages (when not loaded via SPA) */
+.standalone-page {
+    padding-top: 0;
+}
+
+.standalone-page .container-fluid {
+    padding: 2rem 1rem;
+}

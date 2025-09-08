@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Minimercado Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/css/pages.css" rel="stylesheet">
+</head>
+<body class="p-4">
+    <div class="container-fluid">
+        <div class="text-center mb-5">
+            <h1 class="display-4 text-primary fw-bold">
+                <i class="bi bi-basket-fill me-3"></i>Nossos Produtos
+            </h1>
+            <p class="lead text-muted">Seleção especial de produtos frescos e de qualidade</p>
+        </div>
+
+        <!-- Carrossel de Produtos em Destaque -->
+        <div class="mb-5">
+            <div class="category-header">
+                <h2 class="mb-0">
+                    <i class="bi bi-star-fill section-icon"></i>Produtos em Destaque
+                </h2>
+                <p class="mb-0 opacity-75">Os melhores produtos da semana</p>
+            </div>
+            <div class="bg-white p-4 rounded-bottom">
+                <div id="productsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                        <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="2"></button>
+                    </div>
+                    
+                    <div class="carousel-inner">
+                        <!-- Slide 1 -->
+                        <div class="carousel-item active">
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="card product-card h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <img src="../assets/images/frango.webp" alt="Frango inteiro de 1kg, fresco e temperado" 
+                                                 class="product-image mb-3">
+                                            <h5 class="card-title text-dark">Frango 1kg</h5>
+                                            <p class="card-text text-muted">Frango inteiro fresco, ideal para assados e preparo familiar</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price-tag">R$ 18,00</span>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-star-fill text-warning"></i> Premium
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card product-card h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <img src="../assets/images/costela-bovina.webp" alt="Costela bovina premium para churrasco" 
+                                                 class="product-image mb-3">
+                                            <h5 class="card-title text-dark">Costela Bovina kg</h5>
+                                            <p class="card-text text-muted">Costela bovina de primeira qualidade, ideal para churrasco</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price-tag">R$ 32,00</span>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-fire text-danger"></i> Churrasco
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card product-card h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <img src="../assets/images/linguicinha.webp" alt="Linguicinha artesanal de 1kg, tempero especial" 
+                                                 class="product-image mb-3">
+                                            <h5 class="card-title text-dark">Linguicinha 1kg</h5>
+                                            <p class="card-text text-muted">Linguicinha artesanal com tempero especial da casa</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price-tag">R$ 22,00</span>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-award-fill text-success"></i> Artesanal
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 -->
+                        <div class="carousel-item">
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="card product-card h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <img src="../assets/images/mamao.jpg" alt="Mamão maduro por quilo, doce e suculento" 
+                                                 class="product-image mb-3">
+                                            <h5 class="card-title text-dark">Mamão kg</h5>
+                                            <p class="card-text text-muted">Mamão maduro de produtores locais, doce e suculento</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price-tag">R$ 6,00</span>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-geo-alt-fill text-info"></i> Local
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card product-card h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <img src="../assets/images/banana-prata.jpeg" alt="Banana prata madura e doce por quilo" 
+                                                 class="product-image mb-3">
+                                            <h5 class="card-title text-dark">Banana Prata kg</h5>
+                                            <p class="card-text text-muted">Banana prata madura e doce, rica em potássio</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price-tag">R$ 5,50</span>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-heart-fill text-danger"></i> Vitaminas
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card product-card h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <img src="../assets/images/repolho.jpeg" alt="Repolho fresco por quilo, crocante e nutritivo" 
+                                                 class="product-image mb-3">
+                                            <h5 class="card-title text-dark">Repolho kg</h5>
+                                            <p class="card-text text-muted">Repolho fresco de produtores locais, crocante e nutritivo</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price-tag">R$ 4,00</span>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-leaf-fill text-success"></i> Orgânico
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3 -->
+                        <div class="carousel-item">
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="card product-card h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <img src="../assets/images/feijao.webp" alt="Feijão preto selecionado tipo 1" 
+                                                 class="product-image mb-3">
+                                            <h5 class="card-title text-dark">Feijão Preto kg</h5>
+                                            <p class="card-text text-muted">Feijão preto tipo 1, selecionado grão por grão</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price-tag">R$ 8,00</span>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-shield-check text-primary"></i> Tipo 1
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card product-card h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <img src="../assets/images/azeite.jpg" alt="Azeite extra virgem de primeira qualidade" 
+                                                 class="product-image mb-3">
+                                            <h5 class="card-title text-dark">Azeite Extra Virgem</h5>
+                                            <p class="card-text text-muted">Azeite extra virgem de primeira qualidade para seus pratos</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price-tag">R$ 15,00</span>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-droplet-fill text-warning"></i> Extra Virgem
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card product-card h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <img src="../assets/images/farinha.webp" alt="Farinha de trigo sarraceno integral e nutritiva" 
+                                                 class="product-image mb-3">
+                                            <h5 class="card-title text-dark">Farinha de Trigo</h5>
+                                            <p class="card-text text-muted">Farinha de trigo sarraceno, integral e nutritiva</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price-tag">R$ 7,00</span>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-wheat text-warning"></i> Integral
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Próximo</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categorias de Produtos -->
+        <div class="row g-4 mb-5">
+            <!-- Açougue -->
+            <div class="col-lg-4">
+                <div class="category-card card h-100 shadow">
+                    <div class="card-header bg-danger text-white text-center py-3">
+                        <h3 class="mb-0">
+                            <i class="bi bi-egg-fried me-2"></i>Açougue
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Frango inteiro - R$ 18,00/kg</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Costela bovina - R$ 32,00/kg</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Linguiça artesanal - R$ 22,00/kg</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Cortes especiais sob encomenda</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hortifruti -->
+            <div class="col-lg-4">
+                <div class="category-card card h-100 shadow">
+                    <div class="card-header bg-success text-white text-center py-3">
+                        <h3 class="mb-0">
+                            <i class="bi bi-apple me-2"></i>Hortifruti
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Mamão maduro - R$ 6,00/kg</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Banana prata - R$ 5,50/kg</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Repolho orgânico - R$ 4,00/kg</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Produtos sazonais frescos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mercearia -->
+            <div class="col-lg-4">
+                <div class="category-card card h-100 shadow">
+                    <div class="card-header bg-warning text-dark text-center py-3">
+                        <h3 class="mb-0">
+                            <i class="bi bi-shop me-2"></i>Mercearia
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Feijão preto tipo 1 - R$ 8,00/kg</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Azeite extra virgem - R$ 15,00</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Farinha integral - R$ 7,00/kg</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Produtos básicos da despensa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center">
+            <div class="card bg-primary text-white">
+                <div class="card-body p-4">
+                    <h3 class="mb-3">
+                        <i class="bi bi-telephone-fill me-2"></i>Faça seu Pedido Agora!
+                    </h3>
+                    <p class="mb-3">
+                        Entre em contato conosco para consultar preços atualizados e fazer seu pedido
+                    </p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <p class="h5 mb-3">
+                                <i class="bi bi-clock-fill me-2"></i>(00) 1234-5678
+                            </p>
+                            <p><small>Atendimento das 8h00 às 20h00</small></p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3 justify-content-center mt-3">
+                        <a href="#" class="btn btn-light btn-lg" data-page="customer-register">
+                            <i class="bi bi-person-plus me-2"></i>Cadastrar
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-lg" data-page="scheduling">
+                            <i class="bi bi-calendar-check me-2"></i>Agendar Entrega
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .category-header {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section-icon {
+            font-size: 2rem;
+            margin-right: 0.75rem;
+            vertical-align: middle;
+        }
+        
+        .product-card {
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .category-card {
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+        }
+        
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
+        
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .carousel-indicators {
+            margin-bottom: -2rem;
+        }
+        
+        .carousel-indicators button {
+            background-color: #28a745;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/pages/products-handler.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            ProductsPageHandler.initializeIfNeeded();
+        });
+    </script>
+</body>
+</html>

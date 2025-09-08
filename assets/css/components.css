@@ -1,0 +1,230 @@
+/* UI Components - Reusable interface elements */
+
+/* Card Components */
+.card {
+  border: none;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  border-radius: var(--border-radius);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.card-enhanced {
+  background: var(--bg-gradient-light, linear-gradient(135deg, var(--white), #f8f9fa));
+}
+
+/* Hero Section */
+.hero-section {
+  background: var(--bg-gradient-primary, linear-gradient(135deg, var(--primary-color), var(--secondary-color)));
+  color: var(--white);
+  padding: 3rem 0;
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Category Headers */
+.category-header {
+  background: var(--bg-gradient-primary, linear-gradient(135deg, var(--primary-color), var(--secondary-color)));
+  color: var(--white);
+  padding: 1.5rem 2rem;
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  box-shadow: var(--box-shadow);
+}
+
+/* Product Cards */
+.product-card {
+  height: 100%;
+  transition: var(--transition);
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.product-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  transition: var(--transition-fast);
+  box-shadow: var(--box-shadow);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+/* Service Cards */
+.service-card {
+  height: 100%;
+  background: var(--bg-gradient-light, linear-gradient(135deg, var(--white), #f8f9fa));
+  transition: var(--transition);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-xl);
+}
+
+/* Icons */
+.feature-icon {
+  font-size: 3rem;
+  color: var(--secondary-color);
+}
+
+.section-icon {
+  font-size: 2rem;
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}
+
+.service-icon {
+  font-size: 4rem;
+  background: var(--bg-gradient-primary, linear-gradient(135deg, var(--primary-color), var(--secondary-color)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Price and Badge Elements */
+.price-tag {
+  background: var(--bg-gradient-primary, linear-gradient(135deg, var(--secondary-color), var(--primary-color)));
+  color: var(--white) !important;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: inline-block;
+}
+
+.price-highlight {
+  background: var(--bg-gradient-primary, linear-gradient(135deg, var(--secondary-color), var(--primary-color)));
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.free-badge {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: var(--white);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--bg-gradient-primary, linear-gradient(135deg, var(--primary-color), var(--secondary-color)));
+  border-color: var(--primary-color);
+  transition: var(--transition);
+  border-radius: var(--border-radius);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1e5e23, #2e7d32);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.4);
+}
+
+.btn-outline-secondary {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  transition: var(--transition);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  transform: translateY(-1px);
+}
+
+/* Bootstrap Carousel Enhancements */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.carousel-indicators {
+  margin-bottom: -2rem;
+}
+
+.carousel-indicators button {
+  background-color: var(--primary-color);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* Alert styles */
+.alert {
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: var(--success-color);
+  border-left: 4px solid var(--success-color);
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: var(--danger-color);
+  border-left: 4px solid var(--danger-color);
+}
+
+/* Modal enhancements */
+.modal-content {
+  border: none;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-xl);
+}
+
+.modal-header.bg-success {
+  background: var(--bg-gradient-primary, linear-gradient(135deg, var(--success-color), var(--secondary-color))) !important;
+}
+
+/* Loading state for buttons */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .service-icon, .feature-icon {
+    font-size: 2.5rem;
+  }
+  
+  .product-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .section-icon {
+    font-size: 1.5rem;
+  }
+}
