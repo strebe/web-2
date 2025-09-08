@@ -91,7 +91,7 @@ class SimpleRouter {
         // Initialize components after content load
         setTimeout(() => {
           this.initializePageComponents(route);
-        }, 100);
+        }, 150);
       }
     } catch (error) {
       console.error('Error loading route:', error);
