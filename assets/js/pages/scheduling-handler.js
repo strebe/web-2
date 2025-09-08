@@ -4,11 +4,15 @@ class SchedulingFormHandler {
   static currentYear = new Date().getFullYear();
 
   static initializeIfNeeded() {
-    if (this.initialized) return;
-    
     const form = document.getElementById('schedulingForm');
-    if (!form) return;
+    if (!form) {
+      // If form not found, try again after a short delay
+      setTimeout(() => this.initializeIfNeeded(), 100);
+      return;
+    }
 
+    // Always reinitialize to ensure components are properly set up
+    this.initialized = false;
     this.initialize(form);
     this.initialized = true;
   }
@@ -359,6 +363,17 @@ class SchedulingFormHandler {
 // Auto-initialize when page loads
 document.addEventListener('pageLoaded', (e) => {
   if (e.detail.route === 'scheduling') {
+    // Use setTimeout to ensure DOM is fully rendered
+    setTimeout(() => {
+      SchedulingFormHandler.initializeIfNeeded();
+    }, 50);
+  }
+});
+
+// Also listen for DOMContentLoaded as backup
+document.addEventListener('DOMContentLoaded', () => {
+  // Check if we're on scheduling page and initialize if needed
+  if (document.getElementById('schedulingForm')) {
     SchedulingFormHandler.initializeIfNeeded();
   }
 });
