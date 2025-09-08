@@ -2,11 +2,15 @@ class CustomerFormHandler {
   static initialized = false;
 
   static initializeIfNeeded() {
-    if (this.initialized) return;
-    
     const form = document.getElementById('customerForm');
-    if (!form) return;
+    if (!form) {
+      // If form not found, try again after a short delay
+      setTimeout(() => this.initializeIfNeeded(), 100);
+      return;
+    }
 
+    // Always reinitialize to ensure components are properly set up
+    this.initialized = false;
     this.initialize(form);
     this.initialized = true;
   }
@@ -186,9 +190,23 @@ class CustomerFormHandler {
 // Auto-initialize when page loads
 document.addEventListener('pageLoaded', (e) => {
   if (e.detail.route === 'customer-register') {
+    // Use setTimeout to ensure DOM is fully rendered
+    setTimeout(() => {
+      CustomerFormHandler.initializeIfNeeded();
+    }, 50);
+  }
+});
+
+// Also listen for DOMContentLoaded as backup
+document.addEventListener('DOMContentLoaded', () => {
+  // Check if we're on customer register page and initialize if needed
+  if (document.getElementById('customerForm')) {
     CustomerFormHandler.initializeIfNeeded();
   }
 });
+
+// Legacy support
+window.CustomerForm = CustomerFormHandler;
 
 // Legacy support
 window.CustomerForm = CustomerFormHandler;
